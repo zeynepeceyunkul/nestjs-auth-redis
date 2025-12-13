@@ -1,25 +1,25 @@
 # 🔐 NestJS Authentication System  
-### JWT + Redis Refresh Token Rotation
+JWT + Redis Refresh Token Rotation
 
 Production-ready authentication system built with **NestJS**, featuring **JWT access tokens**, **refresh token rotation**, **Redis-based session management**, and **secure logout flow**.
 
-This project is designed as a **reusable authentication backend** for modern web applications.
+This project is designed as a reusable authentication backend for modern web applications.
 
 ---
 
 ## 🚀 Features
 
-- ✅ User Registration & Login  
-- 🔐 JWT Access Token authentication  
-- ♻️ Refresh Token **Rotation** (one-time use)  
-- 🧠 Redis-based refresh token storage  
-- 🚪 Secure Logout (refresh token invalidation)  
-- 🔒 Protected routes with JWT Guard  
-- 🧱 Modular & scalable NestJS architecture  
+- User Registration & Login  
+- JWT Access Token authentication  
+- Refresh Token Rotation (one-time use)  
+- Redis-based refresh token storage  
+- Secure Logout (refresh token invalidation)  
+- Protected routes with JWT Guard  
+- Modular & scalable NestJS architecture  
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
 - **Framework:** NestJS (TypeScript)  
 - **Database:** PostgreSQL (TypeORM)  
@@ -53,11 +53,12 @@ src/
 │
 ├── app.module.ts
 └── main.ts
+```
 
-⚙️ Environment Variables
+## ⚙️ Environment Variables
 
 Create a .env file in the root directory:
-
+```text
 PORT=3000
 
 DB_HOST=localhost
@@ -71,69 +72,93 @@ JWT_EXPIRES_IN=15m
 
 REDIS_HOST=localhost
 REDIS_PORT=6370
+```
 
+.env file is ignored by Git for security reasons.
 
-⚠️ .env file is ignored by Git for security reasons.
+---
 
-🐳 Running with Docker (Postgres + Redis)
+## 🐳 Running with Docker (Postgres + Redis)
+```text
 docker compose up -d
+```
+---
 
-▶️ Running the Application
+## ▶️ Running the Application
+```text
 npm install
 npm run start:dev
-
+```
 
 Application will be available at:
-
+```text
 http://localhost:3000
+```
+---
 
-🔐 Authentication Flow
-1️⃣ Register
+## 🔐 Authentication Flow
+### Register
+```text
 POST /auth/register
+```
 
-2️⃣ Login
+### Login
+```text
 POST /auth/login
+```
 
-
-Returns:
-
+### Response:
+```text
 {
   "accessToken": "...",
   "refreshToken": "..."
 }
+```
 
-3️⃣ Access Protected Route
+### Access Protected Route
+```text
 GET /auth/profile
 Authorization: Bearer <accessToken>
+```
 
-4️⃣ Refresh Token (Rotation)
+### Refresh Token (Rotation)
+```text
 POST /auth/refresh
-
+```
 
 Old refresh token is invalidated
 
-New access + refresh token is issued
+New access and refresh tokens are issued
 
-5️⃣ Logout
+
+### Logout
+```text
 POST /auth/logout
-
+```
 
 Refresh token is removed from Redis
 
 Session is terminated securely
 
-🧪 Testing
+---
+
+## 🧪 Testing
+```text
 npm run test
 npm run test:e2e
+```
+---
 
-🧠 Notes
+## 🧠 Notes
 
 Refresh tokens are single-use (rotation pattern)
 
 Redis prevents refresh token reuse attacks
 
-Architecture is suitable for scaling & microservices
+Architecture is suitable for scaling and microservices
 
-👩‍💻 Author
+---
+
+## 👩‍💻 Author
 
 Zeynep Ece Yünkül
