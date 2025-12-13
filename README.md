@@ -1,98 +1,131 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🔐 NestJS Authentication System (JWT + Redis Refresh Token Rotation)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Production-ready authentication system built with **NestJS**, featuring **JWT access tokens**, **refresh token rotation**, **Redis-based session management**, and **secure logout flow**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This project is designed as a reusable authentication backend for modern web applications.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🚀 Features
 
-## Project setup
+- ✅ User Registration & Login
+- 🔐 JWT Access Token authentication
+- ♻️ Refresh Token **Rotation** (one-time use)
+- 🧠 Redis-based refresh token storage
+- 🚪 Secure Logout (refresh token invalidation)
+- 🔒 Protected routes with JWT Guard
+- 🧱 Modular & scalable NestJS architecture
 
-```bash
-$ npm install
-```
+---
 
-## Compile and run the project
+## 🛠️ Tech Stack
 
-```bash
-# development
-$ npm run start
+- **Framework:** NestJS (TypeScript)
+- **Database:** PostgreSQL (TypeORM)
+- **Authentication:** JWT (Access Token)
+- **Session Store:** Redis
+- **Security:** bcrypt (password hashing)
+- **Containerization:** Docker (Postgres + Redis)
 
-# watch mode
-$ npm run start:dev
+---
 
-# production mode
-$ npm run start:prod
-```
+## 📦 Project Structure
 
-## Run tests
+src/
+├── auth/ # Auth module (login, register, refresh, logout)
+├── users/ # User entity & service
+├── redis/ # Redis connection module
+├── app.module.ts
+└── main.ts
 
-```bash
-# unit tests
-$ npm run test
+yaml
+Kodu kopyala
 
-# e2e tests
-$ npm run test:e2e
+---
 
-# test coverage
-$ npm run test:cov
-```
+## ⚙️ Environment Variables
 
-## Deployment
+Create a `.env` file in the root directory:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+```env
+PORT=3000
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+DB_HOST=localhost
+DB_PORT=5433
+DB_USER=postgres
+DB_PASS=postgres
+DB_NAME=authdb
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+JWT_SECRET=super-secret-key
+JWT_EXPIRES_IN=15m
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+REDIS_HOST=localhost
+REDIS_PORT=6370
+⚠️ .env is ignored by Git for security reasons.
 
-## Resources
+🐳 Running with Docker (Postgres + Redis)
+bash
+Kodu kopyala
+docker compose up -d
+▶️ Running the Application
+bash
+Kodu kopyala
+npm install
+npm run start:dev
+Application will be available at:
 
-Check out a few resources that may come in handy when working with NestJS:
+arduino
+Kodu kopyala
+http://localhost:3000
+🔐 Authentication Flow
+1️⃣ Register
+h
+Kodu kopyala
+POST /auth/register
+2️⃣ Login
+http
+Kodu kopyala
+POST /auth/login
+Returns:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+json
+Kodu kopyala
+{
+  "accessToken": "...",
+  "refreshToken": "..."
+}
+3️⃣ Access Protected Route
+http
+Kodu kopyala
+GET /auth/profile
+Authorization: Bearer <accessToken>
+4️⃣ Refresh Token (Rotation)
+http
+Kodu kopyala
+POST /auth/refresh
+Old refresh token is invalidated
 
-## Support
+New access + refresh token is issued
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+5️⃣ Logout
+http
+Kodu kopyala
+POST /auth/logout
+Refresh token is removed from Redis
 
-## Stay in touch
+Session is terminated securely
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+🧪 Testing
+bash
+Kodu kopyala
+npm run test
+npm run test:e2e
+🧠 Notes
+Refresh tokens are single-use (rotation pattern)
 
-## License
+Redis is used to prevent token reuse attacks
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Architecture is suitable for scaling & microservices
+
+📌 Author
+Developed by Zeynep Ece Yünkül
