@@ -1,25 +1,25 @@
 # 🔐 NestJS Authentication System  
-JWT + Redis Refresh Token Rotation
+### JWT + Redis Refresh Token Rotation
 
 Production-ready authentication system built with **NestJS**, featuring **JWT access tokens**, **refresh token rotation**, **Redis-based session management**, and **secure logout flow**.
 
-This project is designed as a reusable authentication backend for modern web applications.
+This project is designed as a **reusable authentication backend** for modern web applications.
 
 ---
 
 ## 🚀 Features
 
-- User Registration & Login  
-- JWT Access Token authentication  
-- Refresh Token Rotation (one-time use)  
-- Redis-based refresh token storage  
-- Secure Logout (refresh token invalidation)  
-- Protected routes with JWT Guard  
-- Modular & scalable NestJS architecture  
+- ✅ User Registration & Login  
+- 🔐 JWT Access Token authentication  
+- ♻️ Refresh Token **Rotation** (one-time use)  
+- 🧠 Redis-based refresh token storage  
+- 🚪 Secure Logout (refresh token invalidation)  
+- 🔒 Protected routes with JWT Guard  
+- 🧱 Modular & scalable NestJS architecture  
 
 ---
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
 
 - **Framework:** NestJS (TypeScript)  
 - **Database:** PostgreSQL (TypeORM)  
@@ -74,7 +74,7 @@ REDIS_HOST=localhost
 REDIS_PORT=6370
 ```
 
-.env file is ignored by Git for security reasons.
+- ⚠️ .env file is ignored by Git for security reasons.
 
 ---
 
@@ -97,17 +97,17 @@ http://localhost:3000
 ---
 
 ## 🔐 Authentication Flow
-### Register
+### 1️⃣ Register
 ```text
 POST /auth/register
 ```
 
-### Login
+### 2️⃣ Login
 ```text
 POST /auth/login
 ```
 
-### Response:
+Response:
 ```text
 {
   "accessToken": "...",
@@ -115,30 +115,30 @@ POST /auth/login
 }
 ```
 
-### Access Protected Route
+### 3️⃣ Access Protected Route
 ```text
 GET /auth/profile
 Authorization: Bearer <accessToken>
 ```
 
-### Refresh Token (Rotation)
+### 4️⃣ Refresh Token (Rotation)
 ```text
 POST /auth/refresh
 ```
 
-Old refresh token is invalidated
+- Old refresh token is invalidated
 
-New access and refresh tokens are issued
+- New access and refresh tokens are issued
 
 
-### Logout
+### 5️⃣ Logout
 ```text
 POST /auth/logout
 ```
 
-Refresh token is removed from Redis
+- Refresh token is removed from Redis
 
-Session is terminated securely
+- Session is terminated securely
 
 ---
 
@@ -151,11 +151,11 @@ npm run test:e2e
 
 ## 🧠 Notes
 
-Refresh tokens are single-use (rotation pattern)
+- Refresh tokens are single-use (rotation pattern)
 
-Redis prevents refresh token reuse attacks
+- Redis prevents refresh token reuse attacks
 
-Architecture is suitable for scaling and microservices
+- Architecture is suitable for scaling and microservices
 
 ---
 
