@@ -103,9 +103,14 @@ npm run test:e2e
 npm run test:cov
 ```
 
-Coverage report (placeholder):
+### 🧪 Unit Tests
+![Unit test results](./docs/test-unit.png)
 
-![Jest coverage](./docs/jest-coverage.png)
+### 🌐 E2E Tests
+![E2E test results](./docs/test-e2e.png)
+
+### 📊 Coverage Report
+![Jest coverage report](./docs/test-coverage.png)
 
 ---
 
