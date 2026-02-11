@@ -96,6 +96,19 @@ http://localhost:3000
 ```
 ---
 
+## 🧪 Testing
+```text
+npm run test
+npm run test:e2e
+npm run test:cov
+```
+
+Coverage report (placeholder):
+
+![Jest coverage](./docs/jest-coverage.png)
+
+---
+
 ## 🔐 Authentication Flow
 ### 1️⃣ Register
 ```text
@@ -140,13 +153,6 @@ POST /auth/logout
 
 - Session is terminated securely
 
----
-
-## 🧪 Testing
-```text
-npm run test
-npm run test:e2e
-```
 ---
 
 ## 🧠 Notes
